@@ -1,0 +1,33 @@
+# Question: Count number of odd digits in a number
+# Description: You are given an integer n. You need to return the number of odd digits present in the number. The number will have no leading zeroes, except when the number is 0 itself.
+# Example 1
+Input: n = 5
+Output: 1
+Explanation: 5 is an odd digit.
+# Example 2
+Input: n = 25
+Output: 1
+Explanation: The only odd digit in 25 is 5.
+
+Intuition:
+Given a number, all the digits in the number can be extracted one by one from right to left which can be checked for even and odd.
+
+Approach:
+The last digit of the given number can be found by using the modulus operator (used to find the remainder for any division) with the number 10.
+Iterate on the original number till there are digits left, extract the last (rightmost) digit, and check whether the digit is odd or not. In every iteration, divide the original number by 10 so that the remaining digits can be extracted in the next iterations.
+Keep a counter to count the number of odd digits found in the number and every time an odd digit is encountered, increment the counter.
+==================================================================
+
+class Solution {
+    public int countOddDigit(int num) {
+        int count = 0;
+        while(num > 0){
+            int lastDigit = num % 10;
+            if(lastDigit % 2 != 0){
+                count++;
+            }
+            num = num / 10;
+        }
+        return count;
+    }
+}
